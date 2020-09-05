@@ -142,38 +142,32 @@
 				<h1 class="heading">Menu</h1>
 				<hr>
 			</div>
+
+<?php
+        $link = mysqli_connect("localhost", "root", "gitarasiema", "fura_zarcia");
+
+		if (mysqli_connect_error()) {
+
+			die("Błąd bazy");
+
+		}
+
+		$query = "SELECT * FROM menu";  
+
+		$result = mysqli_query($link, $query);
+
+		while($row = mysqli_fetch_array($result)) {
+			
+			echo '
 			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Vegetable ................ <span>$20.50</span></h4>
-				<h5>Chicken / Rosemary / Lemon</h5>
+				<h4>'.$row['nazwa'].' ................ <span>'.$row['cena'].'</span></h4>
+				<h5>'.$row['sklad'].'</h5>
 			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Meat ........................... <span>$30.50</span></h4>
-				<h5>Meat / Rosemary / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Pork ........................ <span>$40.75</span></h4>
-				<h5>Pork / Tooplate / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Orange-Rosemary Salad .......................... <span>$55.00</span></h4>
-				<h5>Salad / Rosemary / Orange</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Squid ...................... <span>$65.00</span></h4>
-				<h5>Squid / Rosemary / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Orange-Rosemary Shrimp ........................ <span>$70.50</span></h4>
-				<h5>Shrimp / Rosemary / Orange</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Prawn ................... <span>$110.75</span></h4>
-				<h5>Chicken / Rosemary / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Seafood ..................... <span>$220.50</span></h4>
-				<h5>Seafood / Rosemary / Lemon</h5>
-			</div>
+			';
+		}
+
+
+?>
 		</div>
 	</div>
 </section>		
