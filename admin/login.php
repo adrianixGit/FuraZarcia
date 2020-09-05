@@ -66,20 +66,49 @@
                 // Jesli wyslano formularz dodawania pozycji w menu
                 if(isset($_POST['dodanie_pozycji'])) {
                     
+                    // Kwerenda dodawania do tabeli menu. Warto zrobic zabezpieczenia
                     $query = 'INSERT INTO menu (nazwa, sklad, cena, pozycja)
                     VALUES ("'.$_POST['nazwa'].'", "'.$_POST['sklad'].'", "'.$_POST['cena'].'", "'.$_POST['pozycja'].'")';
 
+                    // Wykonanie kwerendy
                     $result = mysqli_query($link, $query);
-
-                    var_dump($result);
-                    die();
-
+                    
+                    // Jesli udalo sie wykonac kwerende
+                    if($result) {
+                        echo '<div class="alert alert-success" role="alert">
+                            Poprawnie dodano pozycje w menu
+                        </div>';
+                    } else {
+                        // Jesli nie udalo sie wykona kwerendy
+                        echo '<div class="alert alert-danger" role="alert">
+                            Nie dodano pozycji w menu
+                        </div>';
+                    }
 
                 }
 
+                // Jesli wyslano formularz usuwania pozycji w menu
+                if(isset($_POST['usun_poyzcje_menu'])) {
+                    
+                    // Kwerenda usuwajaca pozycje z menu
+                    $query = 'DELETE FROM menu WHERE id_menu = '.$_POST['id_menu'];
+                    
+                    // wykonanie kwerendy
+                    $result = mysqli_query($link, $query);
 
+                    // Jesli udalo sie wykonac kwerende
+                    if($result) {
+                        echo '<div class="alert alert-success" role="alert">
+                            Usunieto pozycje
+                        </div>';
+                    } else {
+                        // Jesli nie udalo sie wykona kwerendy
+                        echo '<div class="alert alert-danger" role="alert">
+                            Nie usunieto pozycji
+                        </div>';
+                    }
 
-
+                }
             }
 
         }
@@ -101,6 +130,7 @@
             <th scope="col">Skład</th>
             <th scope="col">Cena</th>
             <th scope="col">Pozycja</th>
+            <th scope="col">Operacje</th>
           </tr>
         </thead>
 
@@ -108,10 +138,14 @@
 
 
         <?php
+
+            // kwerenda pobieranie wszystkiego z tabeli menu
             $query = "SELECT * FROM menu";  
 
+            // Wykonanie kwerendy
             $result = mysqli_query($link, $query);
 
+            // Dla wszystkich wierszy wyswietlamy tabele
             while($row = mysqli_fetch_array($result)) {
                 
                 echo '
@@ -121,6 +155,12 @@
                     <td>'.$row['sklad'].'</td>
                     <td>'.$row['cena'].'</td>
                     <td>'.$row['pozycja'].'</td>
+                    <td>
+                        <form method="POST">
+                            <input name="id_menu" type="hidden" value="'.$row['id_menu'].'" />
+                            <button name="usun_poyzcje_menu" type="submit" >X</button>
+                        </form>
+                    </td>
                 </tr>
                 ';
             }
