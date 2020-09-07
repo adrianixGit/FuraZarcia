@@ -2,8 +2,8 @@
 
    session_start();
 
-        //    $hash = md5('Furazarcia4252');
-        // var_dump($hash);
+        //     $hash = md5('Furazarcia4252');
+        //  var_dump($hash);
         
 
 ?>
