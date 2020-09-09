@@ -3,7 +3,7 @@
     session_start();
 
         // Połączenie z bazą
-        $link = mysqli_connect("localhost", "root", "gitarasiema", "fura_zarcia");
+        $link = mysqli_connect("localhost", "root", "", "fura_zarcia");
 
             // Jeśli sie nie udalo polaczyc z baza
             if (mysqli_connect_error()) {
@@ -63,6 +63,8 @@
             // Jesli jego nazwa byla w sesji to znaczy, ze byl juz zalogowany i mozemy robic inne akcje
             } else {
                 
+ ///////////////////////////////////DODAWANIE DO MENU//////////////////////////
+
                 // Jesli wyslano formularz dodawania pozycji w menu
                 if(isset($_POST['dodanie_pozycji'])) {
                     
@@ -109,6 +111,155 @@
                     }
 
                 }
+
+
+               ///////////////////////////////////DODAWANIE DO AKTUALNOSCI//////////////////////////
+
+               if(isset($_POST['dodanie_aktualnosci'])) {
+
+                    $query = 'INSERT INTO aktualnosci (naglowek, tresc, pozycja) 
+                                VALUES("'.$_POST['naglowek'].'", "'.$_POST['tresc'].'", "'.$_POST['pozycja'].'")';
+
+                    $result = mysqli_query($link, $query);
+
+                    if($result) {
+                        echo '<div class="alert alert-success" role="alert">
+                            Poprawnie dodano pozycje w aktualnosci
+                        </div>';
+                    } else {
+                        // Jesli nie udalo sie wykona kwerendy
+                        echo '<div class="alert alert-danger" role="alert">
+                            Nie dodano pozycji w aktualnosci
+                        </div>';
+                    }
+
+                }
+
+                if(isset($_POST['usun_poyzcje_aktualnosci'])) {
+
+                    $query = 'DELETE FROM aktualnosci WHERE id_aktualnosci = "'.$_POST['id_aktualnosci'].'"';
+
+                    $result = mysqli_query($link, $query);
+
+                    if ($result) {
+                            echo '<div class="alert alert-success" role="alert">
+                                    Usunieto pozycje
+                                    </div>';
+
+
+                    }else {
+                        echo '<div class="alert alert-danger" role="alert">
+                                Nie usunieto pozycji
+                                </div>';
+
+
+                    }
+
+                }
+
+                ///////////////////////////////////DODAWANIE DO WYDARZENIA//////////////////////////
+
+               if(isset($_POST['dodanie_wydarzenia'])) {
+
+                $query = 'INSERT INTO wydarzenia (naglowek, tresc, pozycja) 
+                            VALUES("'.$_POST['naglowek'].'", "'.$_POST['tresc'].'", "'.$_POST['pozycja'].'")';
+
+                $result = mysqli_query($link, $query);
+
+                if($result) {
+                    echo '<div class="alert alert-success" role="alert">
+                        Poprawnie dodano pozycje w wydarzenia
+                    </div>';
+                } else {
+                    // Jesli nie udalo sie wykona kwerendy
+                    echo '<div class="alert alert-danger" role="alert">
+                        Nie dodano pozycji w wydarzenia
+                    </div>';
+                }
+
+            }
+
+            if (isset($_POST['usun_pozycje_wydarzenia'])) {
+
+                $query = 'DELETE FROM wydarzenia WHERE id_wydarzenia = "'.$_POST['id_wydarzenia'].'"';
+
+                    $result = mysqli_query($link, $query);
+
+                    if ($result) {
+                            echo '<div class="alert alert-success" role="alert">
+                                    Usunieto pozycje
+                                    </div>';
+
+
+                    }else {
+                            echo '<div class="alert alert-danger" role="alert">
+                                    Nie usunieto pozycji
+                                    </div>';
+
+
+                    }
+                
+
+
+            }
+
+            
+
+            
+
+                    /////////////////////////DODAWANIE DO LOKALIZACJI//////////////////////////
+
+            
+            if(isset($_POST['dodanie_lokalizacja'])) { 
+
+                // sprawdza czy baza jest pusta, jesli tak doda nowa wartosc wpisana
+
+                $query = 'SELECT * FROM lokalizacja';
+
+                $result = mysqli_query($link, $query);
+
+                $row = mysqli_fetch_array($result);
+
+                if(!isset($row)){
+
+                    $query = 'INSERT INTO lokalizacja (lokalizacja)  VALUES ("'.$_POST['lokalizacja'].'")';
+
+                    $result = mysqli_query($link, $query);
+
+                        if($result) {
+                            echo '<div class="alert alert-success" role="alert">
+                                Poprawnie dodano pozycje w lokalizacja
+                            </div>';
+                        } else {
+                            // Jesli nie udalo sie wykona kwerendy
+                            echo '<div class="alert alert-danger" role="alert">
+                                Nie dodano pozycji w lokalizacja
+                            </div>';
+                        }
+
+
+                } else { // jesli nie jest pusta to tylko zamieni wartosc
+
+
+                $query = 'UPDATE lokalizacja SET lokalizacja =  "'.$_POST['lokalizacja'].'"';
+                            
+
+                $result = mysqli_query($link, $query);
+
+                if($result) {
+                    echo '<div class="alert alert-success" role="alert">
+                        Poprawnie dodano pozycje w lokalizacja
+                    </div>';
+                } else {
+                    // Jesli nie udalo sie wykona kwerendy
+                    echo '<div class="alert alert-danger" role="alert">
+                        Nie dodano pozycji w lokalizacja
+                    </div>';
+                }
+            }
+
+            }
+                
             }
 
         }
@@ -118,6 +269,10 @@
 
 <p>Hello <?php echo $_SESSION['user']; ?> </p>
 <a href="logout.php">Log Out</a>
+
+
+                                                    <!-- KONTENER OD MENU -->
+
 
 <div class="container">
     
@@ -169,6 +324,8 @@
         </tbody>
     </table>
 
+
+
     <h1>Dodaj pozycje w menu</h1>
     <form method="POST">
         <div class="form-group">
@@ -189,6 +346,187 @@
         </div>
         <button name="dodanie_pozycji" type="submit" class="btn btn-primary">Dodaj</button>
     </form>
+
+   
+
+
+</div>
+
+                                           <!-- KONTENER OD AKTUALNOSCI -->
+
+ <div class="container"> 
+
+
+ 
+    <h1> AKTUALNOŚCI </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Naglowek</th>
+            <th scope="col">Tresc</th>
+            <th scope="col">Pozycja</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php 
+
+                $query = "SELECT * FROM aktualnosci";
+                
+                $result = mysqli_query($link, $query);
+
+                while ($row = mysqli_fetch_array($result)) {
+
+                    echo '
+                        <tr>
+                        <th scope="row">'.$row['id_aktualnosci'].'</th>
+                        <td>'.$row['naglowek'].'</td>
+                        <td>'.$row['tresc'].'</td>
+                        <td>'.$row['pozycja'].'</td>
+                        <td>
+                            <form method="POST">
+                                <input name="id_aktualnosci" type="hidden" value="'.$row['id_aktualnosci'].'" /> 
+                                <button name="usun_poyzcje_aktualnosci" type="submit" >X</button>
+                            </form>
+                        </td>
+                        </tr>
+                    
+                    
+                    ';
+
+
+                }
+
+            ?>
+            
+        </tbody>
+    </table>
+
+    <h1> Uzupełnij aktualnośći!</h1>  
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Naglówek</label>
+                <input type="text" name="naglowek" class="form-control" id="exampleFormControlInput1" >
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Treść</label>
+                <textarea class="form-control" name="tresc" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Pozycja</label>
+                <input type="text" name="pozycja" class="form-control" id="exampleFormControlInput1" >
+            </div>
+
+            <button name="dodanie_aktualnosci" type="submit" class="btn btn-primary">Dodaj</button> 
+            
+        </form>  
+    
+
+
+
+ </div>
+
+                                    <!-- KONTENER OD WYDARZENIA -->
+
+
+<div class="container">
+ <h1> WYDARZENIA </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Naglowek</th>
+            <th scope="col">Tresc</th>
+            <th scope="col">Pozycja</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php 
+
+                $query = "SELECT * FROM wydarzenia";
+                
+                $result = mysqli_query($link, $query);
+
+                while ($row = mysqli_fetch_array($result)) {
+
+                    echo '
+                        <tr>
+                        <th scope="row">'.$row['id_wydarzenia'].'</th>
+                        <td>'.$row['naglowek'].'</td>
+                        <td>'.$row['tresc'].'</td>
+                        <td>'.$row['pozycja'].'</td>
+                        <td>
+                            <form method="POST">
+                                <input name="id_wydarzenia" type="hidden" value="'.$row['id_wydarzenia'].'" /> 
+                                <button name="usun_pozycje_wydarzenia" type="submit" >X</button>
+                            </form>
+                        </td>
+                        </tr>
+                    
+                    
+                    ';
+
+
+                }
+
+            ?>
+            
+        </tbody>
+    </table>
+
+    <h1> Uzupełnij wydarzenia!</h1>  
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Naglówek</label>
+                <input type="text" name="naglowek" class="form-control" id="exampleFormControlInput1" >
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Treść</label>
+                <textarea class="form-control" name="tresc" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Pozycja</label>
+                <input type="text" name="pozycja" class="form-control" id="exampleFormControlInput1" >
+            </div>
+
+            <button name="dodanie_wydarzenia" type="submit" class="btn btn-primary">Dodaj</button> 
+            
+        </form>  
+
+
+</div>
+
+<div class="container">
+
+<h1> Zmień Lokalizacje</h1>  
+
+    <form method="POST">
+    <div class="form-group">
+                <label for="exampleFormControlInput1">Lokalizacja</label>
+                <input type="text" name="lokalizacja" class="form-control" id="exampleFormControlInput1" >
+            </div>
+
+        <button name="dodanie_lokalizacja" type="submit" class="btn btn-primary">Dodaj</button> 
+    </form>
+
+
+</div>
+
+<div class="container">
+
+<h1> Dodaj zdjęcie</h1>  
+
+<form enctype="multipart/form-data" action="plik.php" method="post" >
+<input type="hidden" name="MAX_FILE_SIZE" value="512000" />
+<input type="file" name="obrazek" />
+<input type="submit" value="wyślij" />
+</form>
 
 
 </div>

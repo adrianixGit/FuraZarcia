@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+$link = mysqli_connect("localhost", "root", "", "fura_zarcia");
+
+if (mysqli_connect_error()) {
+
+	die("Błąd bazy");
+
+}
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,10 +57,11 @@
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#home" class="smoothscroll">START</a></li>
+				<li><a href="#home" class="smoothscroll ">START</a></li>
 				<li><a href="#gallery" class=" smoothscroll">GALERIA</a></li>
 				<li><a href="#menu" class=" smoothscroll">MENU</a></li>
-				<li><a href="#team" class="smoothscroll">AKTUALNOŚCI I WYDARZENIA</a></li>
+				<li><a href="#team" class=" smoothscroll">AKTUALNOŚCI</a></li>
+				<li><a href="#wydarzenia" class="smoothscroll">WYDARZENIA</a></li>
 				<li><a href="#contact" class=" smoothscroll">KONTAKT</a></li>
 			</ul>
 		</div>
@@ -144,13 +160,7 @@
 			</div>
 
 <?php
-        $link = mysqli_connect("localhost", "root", "gitarasiema", "fura_zarcia");
-
-		if (mysqli_connect_error()) {
-
-			die("Błąd bazy");
-
-		}
+        
 
 		$query = "SELECT * FROM menu";  
 
@@ -160,7 +170,8 @@
 			
 			echo '
 			<div class="col-md-6 col-sm-6">
-				<h4>'.$row['nazwa'].' ................ <span>'.$row['cena'].'</span></h4>
+				<h4>'.$row['nazwa'].' | '.$row['cena'].'</h4>
+			
 				<h5>'.$row['sklad'].'</h5>
 			</div>
 			';
@@ -173,31 +184,69 @@
 </section>		
 
 
-<!-- team section -->
-<section id="team">
+
+
+<!-- aktualnosci section -->
+<section id="team" >
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
-				<h1 class="heading">Aktualności i wydarzenia</h1>
+				<h1>Aktualności</h1>
 				<hr>
 			</div>
-		<!-- 	<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
-				<img src="images/team1.jpg" class="img-responsive center-block" alt="team img">
-				<h4>Thanya</h4>
-				<h3>Main Chef</h3>
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<img src="images/team2.jpg" class="img-responsive center-block" alt="team img">
-				<h4>Lynda</h4>
-				<h3>Pizza Specialist</h3>
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.9s">
-				<img src="images/team3.jpg" class="img-responsive center-block" alt="team img">
-				<h4>Jenny Ko</h4>
-				<h3>New Baker</h3>
-			</div>
-		</div> -->
+
+			<?php
+
+				$query = "SELECT * FROM aktualnosci";  
+
+				$result = mysqli_query($link, $query);
+
+				while($row = mysqli_fetch_array($result)) {
+						
+					echo '
+					<div class="col-md-12 col-sm-12">
+						<h2>'.$row['naglowek'].'</h2> 
+						<span>'.$row['tresc'].'</span>
+							
+					</div>
+						';
+					}
+
+			?>
 	</div>
+	
+</section>
+
+
+
+<!-- Wydarzenia section -->
+<section id="wydarzenia" >
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
+				<h1>Wydarzenia</h1>
+				<hr>
+			</div>
+			<?php
+
+				$query = "SELECT * FROM wydarzenia";  
+
+				$result = mysqli_query($link, $query);
+
+				while($row = mysqli_fetch_array($result)) {
+					
+					echo '
+					<div class="col-md-12 col-sm-12">
+						<h2>'.$row['naglowek'].'</h2> 
+						<span>'.$row['tresc'].'</span>
+						
+					</div>
+					';
+				}
+
+			?>
+	</div>
+	
 </section>
 
 
@@ -211,25 +260,28 @@
 			</div>
 
 			<div class="col-12"> 
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155798.00058415037!2d16.761584517776623!3d52.40044577036019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470444d2ece10ab7%3A0xa4ea31980334bfd1!2zUG96bmHFhA!5e0!3m2!1spl!2spl!4v1598343255851!5m2!1spl!2spl" 
-			width="100%" height="450" frameborder="0" style="border: black 4px dashed;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+			<?php
+
+				
+				$query = "SELECT * FROM lokalizacja";  
+
+				$result = mysqli_query($link, $query);
+
+				while($row = mysqli_fetch_array($result)) {
+					
+					echo '
+					
+					<iframe src="'.$row['lokalizacja'].'" 
+					width="100%" height="450" frameborder="0" style="border: black 4px dashed;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+
+					';
+				}
+
+			?>
 			</div>
-			<!--<div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeIn" data-wow-delay="0.9s">
-				<form action="#" method="post">
-					<div class="col-md-6 col-sm-6">
-						<input name="name" type="text" class="form-control" id="name" placeholder="Name">
-				  </div>
-					<div class="col-md-6 col-sm-6">
-						<input name="email" type="email" class="form-control" id="email" placeholder="Email">
-				  </div>
-					<div class="col-md-12 col-sm-12">
-						<textarea name="message" rows="8" class="form-control" id="message" placeholder="Message"></textarea>
-					</div>
-					<div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-						<input name="submit" type="submit" class="form-control" id="submit" value="make a reservation">
-					</div>
-				</form>
-			</div>-->
+			
 			<div class="col-md-2 col-sm-1"></div>
 		</div>
 	</div>
