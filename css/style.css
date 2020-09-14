@@ -39,14 +39,28 @@ p {
 
 hr {
 	border-top: 2px solid  #33cc33;
-	width: 120px;
+	width: 300px;
 }
 
-#menu, #gallery, #team, #wydarzenia {
+#menu hr {
+
+  border-top: 2px solid  black;
+	width: 300px;
+}
+
+#wydarzenia hr {
+
+  border-top: 2px solid  black;
+	width: 300px;
+}
+
+
+
+#menu, #gallery, #aktualnosci, #wydarzenia {
 	padding-top: 100px;
 	padding-bottom: 100px;
 }
-#menu, #contact {
+#menu {
  
   background-color: #33cc33;
   color:  black;
@@ -109,19 +123,28 @@ hr {
   box-shadow: 0px 2px 8px 0px green;
   border: none;
   margin-bottom: 0;
+  text-align: center;
+  padding-top:10px;
+  
+  
+
+  
 }
 .navbar-brand, .navbar-nav li a {
   line-height: 28px;
+  margin-left: 62px;
+  
 }
 .navbar-default .navbar-brand  {
   color: #33cc33;
   font-size: 22px;
   font-weight: bold;
   letter-spacing: 2px;
+  
 }
 .navbar-default .navbar-nav li a {
-  font-size: 12px;
-  letter-spacing: 1px;
+  font-size: 15px;
+  letter-spacing: 3px;
   color: #33cc33;
 }
 
@@ -137,11 +160,78 @@ hr {
 
 }
 
-.social-links-style {
-
-  color: white;
 
 
+ #social-links-modal {
+
+  list-style-type: none;
+  z-index: 100;
+ 
+  
+
+}
+
+.social-icon-modal {
+  padding: 0;
+  
+}
+.social-icon-modal li {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+}
+
+.social-icon-modal li a {
+  background: black;
+  border-radius: 10%;
+  border:#33cc33 solid 2px;
+  color: #33cc33;
+  font-size: 16px;
+  width: 80px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+  margin-top: 5px;
+  margin-right: 16px;
+  top: 0;
+  position: relative;
+  padding: 0;
+}
+.social-icon-modal li a:hover {
+  background: #33cc33;
+  border-radius: 10%;
+  border:#F6D76B solid 2px;
+  color: black;
+  
+
+}
+
+/* Modal */
+
+.modal-content {
+
+  background-color: black;
+
+}
+
+#modalZamow h2 {
+
+  color: #33cc33;
+
+}
+
+.modal-header {
+
+  color: #33cc33;
+
+}
+
+.modal-footer button {
+
+  background-color:#33cc33;
+  color: black;
 
 }
 
@@ -169,6 +259,7 @@ hr {
           align-items: center;
   height: 100vh;
   text-align: center;
+  margin-top:8.5%;
   
   
 }
@@ -183,7 +274,7 @@ hr {
 
   #mobile {
 
-
+    
     display:block;
     -webkit-background-size: cover;
   background-size: cover;
@@ -197,8 +288,7 @@ hr {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-   
-    margin-top:15%;
+          
     text-align: center;
     
 
@@ -211,39 +301,59 @@ hr {
 }
 
 
-/* team section */
-#team {
+/* aktualnosci section */
+#aktualnosci {
   text-align: center;
   background-color: black;
+  
 }
 
-#team h1 {
+#aktualnosci h1 {
 
   color:#33cc33
 
 }
 
-#team h3 {
+#aktualnosci h2 {
+
+  color: #33cc33;
+
+}
+
+#aktualnosci h3 {
   color: white;
   font-size: 18px;
   line-height: 4px;
 }
-#team h4 {
+#aktualnosci h4 {
   color: white;
   padding-top: 24px;
   
 }
-#team .col-md-4 {
+#aktualnosci .col-md-4 {
  padding-top: 42px;
 }
+
+#aktualnosci span {
+
+  color: #33cc33;
+
+}
+
+
+
+/* wydarzenia section */
 
 #wydarzenia {
 
   text-align: center;
 
-  color: #33cc33;
+  color: black;
+
+  background-color: #33cc33;
 
 }
+
 
 
 
@@ -300,6 +410,12 @@ hr {
 }
 #contact .col-md-8 {
   margin-bottom: 32px;
+}
+
+#contact h1 {
+
+  color:#33cc33;
+
 }
 
 
@@ -366,13 +482,35 @@ footer .fa {
 .social-icon li a:hover {
   background: #F6D76B;
   top: 5px;
+
+}
+
+
+#zamow {
+
+  width: 48px;
+  height: 150px;
+  background-color: black;
+  border-radius: 40%;
+  border: #33cc33 solid 2px;
+  position:relative;
+  top: 0;
+  transition: all 0.4s ease-in-out;
+
+}
+
+#zamow:hover {
+
+ top: 5px;
+  
+
 }
 
 /* copyright section */
 #copyright {
   background: black;
   color: #ffffff;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   text-align: center;
 }

@@ -1,3 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="styleLogin.css">
+    <title>Panel Administratora</title>
+
+  </head>
+  <body>
+    
+
 <?php
 
     session_start();
@@ -258,34 +274,36 @@
                 }
             }
 
-            }
-                
-            }
-
         }
+                
+        }
+
+    }
 ?>
 
-<link rel="stylesheet" href="../css/bootstrap.min.css">
+<div class="container-fluid">
 
-<p>Hello <?php echo $_SESSION['user']; ?> </p>
-<a href="logout.php">Log Out</a>
+    <button type="button" class="btn btn-success" id="logoutbutton"><a href="logout.php">Log Out</a></button>
+    <h5 >Witaj w Panelu Administratora: <span><?php echo $_SESSION['user']; ?></span> </h5>
+</div>
 
 
                                                     <!-- KONTENER OD MENU -->
 
 
 <div class="container">
-    
-<h1>menu</h1>
-    <table class="table">
+<h1>Menu</h1>
+<div class="table-responsive-sm">
+
+    <table class="table table-sm table-dark">
         <thead>
-          <tr>
+          <tr class="bg-primary">
             <th scope="col">ID</th>
             <th scope="col">Nzwa</th>
             <th scope="col">Skład</th>
             <th scope="col">Cena</th>
             <th scope="col">Pozycja</th>
-            <th scope="col">Operacje</th>
+            <th scope="col">Usuń</th>
           </tr>
         </thead>
 
@@ -323,6 +341,7 @@
         ?>
         </tbody>
     </table>
+</div>
 
 
 
@@ -352,21 +371,23 @@
 
 </div>
 
-                                           <!-- KONTENER OD AKTUALNOSCI -->
+<hr>                                          <!-- KONTENER OD AKTUALNOSCI -->
 
  <div class="container"> 
 
 
- 
-    <h1> AKTUALNOŚCI </h1>
+ <h1>Aktualności</h1>
+    <div class="table-responsive-sm ">
+    
 
-    <table class="table">
+    <table class="table table-sm table-dark">
         <thead>
-            <tr>
+            <tr class="bg-primary">
             <th scope="col">Id</th>
             <th scope="col">Naglowek</th>
             <th scope="col">Tresc</th>
             <th scope="col">Pozycja</th>
+            <th scope="col">Usuń</th>
             </tr>
         </thead>
         <tbody>
@@ -403,6 +424,7 @@
             
         </tbody>
     </table>
+ </div>
 
     <h1> Uzupełnij aktualnośći!</h1>  
 
@@ -430,18 +452,20 @@
  </div>
 
                                     <!-- KONTENER OD WYDARZENIA -->
-
+<hr>
 
 <div class="container">
- <h1> WYDARZENIA </h1>
+<h1> Wydarzenia </h1>
+ <div class="table-responsive-sm">
 
-    <table class="table">
-        <thead>
-            <tr>
+    <table class="table table-sm table-dark">
+        <thead >
+            <tr class="bg-primary">
             <th scope="col">Id</th>
             <th scope="col">Naglowek</th>
             <th scope="col">Tresc</th>
             <th scope="col">Pozycja</th>
+            <th scope="col">Usuń</th>
             </tr>
         </thead>
         <tbody>
@@ -478,7 +502,7 @@
             
         </tbody>
     </table>
-
+</div>
     <h1> Uzupełnij wydarzenia!</h1>  
 
         <form method="POST">
@@ -502,6 +526,8 @@
 
 </div>
 
+<hr> 
+                                  <!-- KONTENER LOKALIZACJA -->
 <div class="container">
 
 <h1> Zmień Lokalizacje</h1>  
@@ -510,23 +536,66 @@
     <div class="form-group">
                 <label for="exampleFormControlInput1">Lokalizacja</label>
                 <input type="text" name="lokalizacja" class="form-control" id="exampleFormControlInput1" >
+                <p>Aby dodać lokalizacje trzeba pobrać link lokalizacji z Google Maps: Podajemy adres/udostępnij/umieszczanie mapy.
+                    Kopjujemy link do formularza i wysyłamy go w takiej formie jak poniżej:
+                    
+                       <p class="table-responsive-sm"> https://www.google.com/maps/embed?pb=!
+                           1m18!1m12!1m3!1d39043.
+                           70636411347!2d17.8322706
+                           0155836!3d52.29364987150649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+                           1!3m3!1m2!1s0x4704c600
+                           c3408c55%3A0x159b488d38a7ad65!2zU8WCdXBjYQ!5e0!3m2!1spl!2spl
+                           !4v1599723857793!5m2!1spl!2spl </p>
+                     
+                    </p>
             </div>
 
-        <button name="dodanie_lokalizacja" type="submit" class="btn btn-primary">Dodaj</button> 
+        <button name="dodanie_lokalizacja" type="submit" class="btn btn-primary">Udostępnij</button> 
     </form>
 
 
 </div>
 
+<hr>
+
 <div class="container">
 
-<h1> Dodaj zdjęcie</h1>  
+<h1> Dodaj zdjęcie</h1>
+
+                
+
+    <?php
+        $directory="../images/galeria";  // folder ze zdjeciami
+        $dir=opendir($directory); // otwieranie folderu ze zdjeciami
+        $file_list="<ul>";// bedzie wypisywanie w ul
+        while($file_name=readdir($dir)) // ma wypisywac dopoki nie wypisze wszytskiego 
+            {
+            if(($file_name!=".")&&($file_name!=".."))
+                {
+                $file_list.="<li><a href='usun.php?plik=$file_name'>USUŃ</a> $file_name</li>"; // wypisuje nazwe zdjecia i linkuje kazde z nich do usun.php
+                }
+            }
+        $file_list.="</ul>"; // przypisuje zamykanie ul do zmiennej
+        closedir($dir); // zamyka folder
+        echo "
+            Lista zdjęć w katalogu $directory: 
+            $file_list";
+    ?>
 
 <form enctype="multipart/form-data" action="plik.php" method="post" >
 <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
 <input type="file" name="obrazek" />
-<input type="submit" value="wyślij" />
+<input type="submit" value="wyślij" class="btn btn-primary" />
 </form>
 
 
 </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

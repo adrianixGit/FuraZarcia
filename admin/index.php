@@ -14,8 +14,17 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <style>
+
+
+
 body {
     font-family: "Lato", sans-serif;
+
+    background: url('../images/proba.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 
@@ -28,10 +37,19 @@ body {
 
 .sidenav {
     height: 100%;
-    background-color: #000;
+    background-color: black;
     overflow-x: hidden;
     padding-top: 20px;
+    opacity:0.9;
+    text-align: center;
 }
+
+ label {
+
+    font-weight: bold;
+    font-size: 20px;
+
+ }
 
 
 .main {
@@ -58,7 +76,7 @@ body {
     }
 
     .sidenav{
-        width: 40%;
+        width: 30%;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -78,7 +96,8 @@ body {
 .login-main-text{
     margin-top: 20%;
     padding: 60px;
-    color: #fff;
+    color: #33cc33;
+    
 }
 
 .login-main-text h2{
@@ -87,15 +106,15 @@ body {
 
 .btn-black{
     background-color: #000 !important;
-    color: #fff;
+    color: #33cc33;
 }
 
 </style>
 
 <div class="sidenav">
          <div class="login-main-text">
-            <h2>Fura Żarcia<br></h2>
-            <p>Panel administracyjny</p>
+            <h1>Fura Żarcia<br></h1>
+            <h5>Panel administracyjny</h5>
          </div>
       </div>
       <div class="main">

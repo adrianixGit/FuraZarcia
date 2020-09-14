@@ -1,7 +1,13 @@
 <?php
 
-//   var_dump($_FILES['obrazek']['tmp_name']);
-//     die;
+$link = mysqli_connect("localhost", "root", "", "fura_zarcia");
+
+if (mysqli_connect_error()) {
+
+	die("Błąd bazy");
+
+}
+
 
 
 
@@ -46,14 +52,18 @@ function sprawdz_typ()
 
 
 
-  $lokalizacja = '../images/';
+  $lokalizacja = '../images/galeria/';
 
   if(move_uploaded_file($_FILES['obrazek']['tmp_name'], $lokalizacja.$_FILES['obrazek']['name'])){ // move_uploaded_file odpowiada za dodanie pliku
 
-    echo("Plik zosał załadowany.");
+          echo("Plik zosał załadowany.");
 
-           
-        
+          ////////// dodanie do tablicy nazwy obrazka //////
+
+          $query = 'INSERT INTO galeria (zdjecie) VALUES ("'.$_FILES['obrazek']['name'].'")';
+
+          mysqli_query($link, $query);
+
          header("Location:login.php");
 
         }
@@ -64,7 +74,7 @@ function sprawdz_typ()
 
         
 
-        die;
+     
 
 
 

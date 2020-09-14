@@ -36,6 +36,8 @@ if (mysqli_connect_error()) {
 </head>
 <body data-spy="scroll" data-target="#navbar">
 
+
+
 <!-- preloader section -->
 <section class="preloader">
 	<div class="sk-spinner sk-spinner-pulse"></div>
@@ -43,8 +45,11 @@ if (mysqli_connect_error()) {
 
 <!-- navigation section -->
  <section class="navbar navbar-default navbar-fixed-top" role="navigation" >
+
+ 
 	
-	<div class="container">
+	<div class="container" id="menucontainer">
+	<img src="images/logofura.jpg" style="width: 80px; height:60px; "  class="img-responsive center-block" alt="team img">
 		<div class="navbar-header">
 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="icon icon-bar"></span>
@@ -53,16 +58,16 @@ if (mysqli_connect_error()) {
 			</button>
 			
 			<!--<a href="#" class="navbar-brand text-style">FuraŻarcia</a>-->
-			<img src="images/furalogo.png" style="width: 50px; height:100%; margin-top:5px; margin-bottom:5px; opacity:0.8;"  class="img-responsive center-block" alt="team img">
+			
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav ">
 				<li><a href="#home" class="smoothscroll ">START</a></li>
 				<li><a href="#gallery" class=" smoothscroll">GALERIA</a></li>
 				<li><a href="#menu" class=" smoothscroll">MENU</a></li>
-				<li><a href="#team" class=" smoothscroll">AKTUALNOŚCI</a></li>
+				<li><a href="#aktualnosci" class=" smoothscroll">AKTUALNOŚCI</a></li>
 				<li><a href="#wydarzenia" class="smoothscroll">WYDARZENIA</a></li>
-				<li><a href="#contact" class=" smoothscroll">KONTAKT</a></li>
+				<li><a href="#godziny" class=" smoothscroll">KONTAKT</a></li>
 			</ul>
 		</div>
 	</div>
@@ -81,23 +86,53 @@ if (mysqli_connect_error()) {
 
 <sectio id="mobile">
 
-	<img src="images/home-bg333.jpg" style="width:100%;">
+	
+
+	<img src="images/home-bg333.jpg" style="width:100%; margin-top:65px;"> 
 	
 </sectio>
 	
 
-<div id="social-links" class="social-links-style">
+<div id="social-links" class="">
 
 	<ul class="social-icon">
 
-		<li><a href="#" class="fa fa-facebook wow fadeInUp" data-wow-delay="0.3s"></a></li>
+		<li><a href="https://pl-pl.facebook.com/furazarcia/videos/d41d8cd9/519090792368074/" class="fa fa-facebook wow fadeInUp" data-wow-delay="0.3s"></a></li>
 		<br/>
-		<li><a href="#" class="fa fa-instagram wow fadeInUp" data-wow-delay="0.6s"></a></li>
-		</br>
-		<li><a href="#" class="fab fa-facebook-messenger wow fadeInUp" data-wow-delay="0.9s"></a></li>
+		<li><a href="https://www.instagram.com/fura_zarcia/"  class="fab fa-instagram wow fadeInUp" data-wow-delay="0.6s"></a></li>
+		<br/>
+		<li><a href="#lokalizacja"  class="fas fa-map-marker-alt wow fadeInUp" data-wow-delay="0.9s"></a></li>
 		
+		</li>
 	</ul>
 
+		<div id="zamow" class="wow fadeInUp" data-wow-delay="1.2s"><a href="https://pl-pl.facebook.com/furazarcia/videos/d41d8cd9/519090792368074/"  data-toggle="modal" data-target="#modalZamow" data-wow-delay="0.9s"><img src="images/zamowTekst3.png" style="width: 35px; margin-top:10px; margin-left:5px;"></a></div>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="modal fade" id="modalZamow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="exampleModalLabel">Zamów</h2>
+        </button>
+      </div>
+      <div class="modal-body">
+		  
+	  	<div id="social-links-modal" class="">
+		  	<ul class="social-icon-modal">
+			  <li><a href="tel: +48 660 275 874 " class="fa fa-phone wow fadeInUp" data-wow-delay="0.3s"></a></li>
+			  <li><a href="https://www.facebook.com/messages/furazarcia"  class="fab fa-facebook-messenger wow fadeInUp" data-wow-delay="0.5s"></a></li>
+		 	</ul>  
+		</div>	  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -109,42 +144,29 @@ if (mysqli_connect_error()) {
 				<h1>Galeria</h1>
 				<hr>
 			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
-				<a href="images/food1.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food1.jpg" alt="gallery img"></a>
-				
-				<a href="images/food2.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food2.jpg" alt="gallery img"></a>
-				
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<a href="images/food3.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food3.jpg" alt="gallery img"></a>
 
-				<a href="images/food4.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food4.jpg" alt="gallery img"></a>
-				
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.9s">
-				<a href="images/food5.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food5.jpg" alt="gallery img"></a>
-				
-				<a href="images/food6.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food6.jpg" alt="gallery img"></a>
-					
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<a href="images/food7.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food7.jpg" alt="gallery img"></a>
+			<!-- DODAWANIE ZDJEC Z BAZY -->
 
-				<a href="images/food8.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food8.jpg" alt="gallery img"></a>
-				
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<a href="images/food9.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food9.jpg" alt="gallery img"></a>
+				<?php
 
-				<a href="images/food10.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food10.jpg" alt="gallery img"></a>
-				
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<a href="images/food11.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food11.jpg" alt="gallery img"></a>
+					$query = 'SELECT * FROM galeria';
+					$result = mysqli_query($link, $query);
+					while($row = mysqli_fetch_array($result)) {
 
-				<a href="images/food12.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/food12.jpg" alt="gallery img"></a>
-				
-			</div>
+						echo '
+						
+						<div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
+						<a href="images/galeria/'.$row['zdjecie'].'" data-lightbox-gallery="zenda-gallery"><img src="images/galeria/'.$row['zdjecie'].'" alt="gallery img"></a>
+						</div>
+
+						';
+
+
+					}
+
+
+				?>
+
 		</div>
 	</div>
 </section>
@@ -152,10 +174,10 @@ if (mysqli_connect_error()) {
 
 <!-- menu section -->
 <section id="menu" >
-	<div class="container">
-		<div class="row">
+	<div class="container" >
+		<div class="row wow fadeInUp" data-wow-delay="0.6s">
 			<div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
-				<h1 class="heading">Menu</h1>
+				<h1>Menu</h1>
 				<hr>
 			</div>
 
@@ -187,9 +209,9 @@ if (mysqli_connect_error()) {
 
 
 <!-- aktualnosci section -->
-<section id="team" >
+<section id="aktualnosci" >
 	<div class="container">
-		<div class="row">
+		<div class="row wow fadeInUp"  data-wow-delay="0.6s">
 			<div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
 				<h1>Aktualności</h1>
 				<hr>
@@ -222,7 +244,7 @@ if (mysqli_connect_error()) {
 <!-- Wydarzenia section -->
 <section id="wydarzenia" >
 	<div class="container">
-		<div class="row">
+		<div class="row wow fadeInUp"  data-wow-delay="0.6s">
 			<div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
 				<h1>Wydarzenia</h1>
 				<hr>
@@ -253,9 +275,9 @@ if (mysqli_connect_error()) {
 <!-- contact section -->
 <section id="contact" >
 	<div class="container">
-		<div class="row">
+		<div class="row wow fadeInUp"  data-wow-delay="0.6s" id="lokalizacja">
 			<div class="col-md-offset-1 col-md-10 col-sm-12 text-center">
-				<h1 class="heading">Aktulanie jestem tutaj:</h1>
+				<h1>Aktulanie jestem tutaj:</h1>
 				<hr>
 			</div>
 
@@ -273,7 +295,7 @@ if (mysqli_connect_error()) {
 					echo '
 					
 					<iframe src="'.$row['lokalizacja'].'" 
-					width="100%" height="450" frameborder="0" style="border: black 4px dashed;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+					width="100%" height="450" frameborder="0" style="border: #33cc33 4px dashed;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 
 					';
@@ -291,7 +313,7 @@ if (mysqli_connect_error()) {
 
 <!-- footer section -->
 <footer >
-	<div class="container">
+	<div class="container" id="godziny">
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay="0.6s">
 				<h2 class="heading">Kontakt</h2>
@@ -325,7 +347,7 @@ if (mysqli_connect_error()) {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
-				
+			<img src="images/logofura.jpg" style="width: 100px; "  class="" alt="team img">
 			</div>
 		</div>
 	</div>
@@ -339,6 +361,13 @@ if (mysqli_connect_error()) {
 <script src="js/nivo-lightbox.min.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/custom.js"></script>
+
+<script type="text/javascript">
+
+	
+
+</script>
+
 
 </body>
 </html>
