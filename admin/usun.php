@@ -5,7 +5,7 @@ $file_name = $_GET['plik']; // pobiera nazwe zdjecia po kliknieciu w USUN przy n
 
          if( unlink("../images/galeria/".$file_name )  ) { // usuwa zdjecie o pobranej nazwie
 
-            $link = mysqli_connect("localhost", "root", "", "fura_zarcia");
+            $link = mysqli_connect("localhost", "root", "gitarasiema", "fura_zarcia");
 
             if (mysqli_connect_error()) {
 

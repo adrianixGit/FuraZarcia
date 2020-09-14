@@ -19,7 +19,7 @@
     session_start();
 
         // Połączenie z bazą
-        $link = mysqli_connect("localhost", "root", "", "fura_zarcia");
+        $link = mysqli_connect("localhost", "root", "gitarasiema", "fura_zarcia");
 
             // Jeśli sie nie udalo polaczyc z baza
             if (mysqli_connect_error()) {
