@@ -34,7 +34,7 @@ if (mysqli_connect_error()) {
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
 	<script src="https://kit.fontawesome.com/468278cfc3.js" crossorigin="anonymous"></script>
 </head>
-<body data-spy="scroll" data-target="#navbar">
+<body data-spy="scroll" data-target="#navbar" data-offset="100">
 
 
 
@@ -57,7 +57,7 @@ if (mysqli_connect_error()) {
 				<span class="icon icon-bar"></span>
 			</button>
 			
-			<!--<a href="#" class="navbar-brand text-style">FuraŻarcia</a>-->
+			
 			
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
@@ -79,7 +79,7 @@ if (mysqli_connect_error()) {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
-			<!-- <img src="images/furalogo222.png" class="img-responsive center-block" alt="team img"> -->
+			
 			</div>
 	</div>		
 </section>
@@ -88,7 +88,7 @@ if (mysqli_connect_error()) {
 
 	
 
-	<img src="images/home-bg333.jpg" style="width:100%; margin-top:65px;"> 
+	<img src="images/home-bg333.jpg" style="width:100%; margin-top:90px;"> 
 	
 </sectio>
 	
@@ -106,7 +106,7 @@ if (mysqli_connect_error()) {
 		</li>
 	</ul>
 
-		<div id="zamow" class="wow fadeInUp" data-wow-delay="1.2s"><a href="https://pl-pl.facebook.com/furazarcia/videos/d41d8cd9/519090792368074/"  data-toggle="modal" data-target="#modalZamow" data-wow-delay="0.9s"><img src="images/zamowTekst3.png" style="width: 35px; margin-top:10px; margin-left:5px;"></a></div>
+		<div id="zamow" class="wow fadeInUp" data-wow-delay="1.2s"><a href="https://pl-pl.facebook.com/furazarcia/videos/d41d8cd9/519090792368074/"  data-toggle="modal" data-target="#modalZamow" data-wow-delay="0.9s"><img src="images/zamowtext.png" style="width: 40px; margin-top:11px; margin-left:2px;"></a></div>
 
 </div>
 
@@ -184,7 +184,7 @@ if (mysqli_connect_error()) {
 <?php
         
 
-		$query = "SELECT * FROM menu";  
+		$query = "SELECT * FROM menu ORDER BY pozycja ASC";  
 
 		$result = mysqli_query($link, $query);
 
@@ -219,7 +219,7 @@ if (mysqli_connect_error()) {
 
 			<?php
 
-				$query = "SELECT * FROM aktualnosci";  
+				$query = "SELECT * FROM aktualnosci ORDER BY pozycja ASC";  
 
 				$result = mysqli_query($link, $query);
 
@@ -251,7 +251,7 @@ if (mysqli_connect_error()) {
 			</div>
 			<?php
 
-				$query = "SELECT * FROM wydarzenia";  
+				$query = "SELECT * FROM wydarzenia ORDER BY pozycja ASC";  
 
 				$result = mysqli_query($link, $query);
 
@@ -312,22 +312,22 @@ if (mysqli_connect_error()) {
 
 
 <!-- footer section -->
-<footer >
-	<div class="container" id="godziny">
+<footer id="godziny">
+	<div class="container" >
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay="0.6s">
-				<h2 class="heading">Kontakt</h2>
+				<h2 >Kontakt</h2>
 				<div class="ph">
 					<p><i class="fa fa-phone"></i> Telefon</p>
 					<h4>090-080-0760</h4>
 				</div>
 				<div class="address">
 					<p><i class="fa fa-envelope"></i> E-mail</p>
-					<h4>randomowyemail@gmail.com</h4>
+					<h4>furazarcia@gmail.com</h4>
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-lg-6 wow fadeInUp" data-wow-delay="0.6s">
-				<h2 class="heading">Godziny otwarcia</h2>
+				<h2>Godziny otwarcia</h2>
 					<p>Poniedziałek <span>ZAMKNIĘTE</span></p>
 					<p>Wtorek <span>17:00 - 20:00</span></p>
 					<p>Środa <span>17:00 - 20:00</span></p>

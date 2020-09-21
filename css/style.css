@@ -422,6 +422,7 @@ hr {
 /* footer section */
 footer {
   background: url('../images/footer1.jpg') 50% 0 repeat-y fixed;
+  height:100vh;
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center;
@@ -438,6 +439,7 @@ footer h3 {
 }
 footer p {
   color: #33cc33;
+  font-size: 18px;
 }
 footer span {
   font-weight: bold;
@@ -490,9 +492,9 @@ footer .fa {
 
   width: 48px;
   height: 150px;
-  background-color: black;
+  background-color: #33cc33;
   border-radius: 40%;
-  border: #33cc33 solid 2px;
+  border: black solid 2px;
   position:relative;
   top: 0;
   transition: all 0.4s ease-in-out;
@@ -510,7 +512,7 @@ footer .fa {
 #copyright {
   background: black;
   color: #ffffff;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   text-align: center;
 }

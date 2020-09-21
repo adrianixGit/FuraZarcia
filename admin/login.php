@@ -298,7 +298,7 @@
     <table class="table table-sm table-dark">
         <thead>
           <tr class="bg-primary">
-            <th scope="col">ID</th>
+            
             <th scope="col">Nzwa</th>
             <th scope="col">Skład</th>
             <th scope="col">Cena</th>
@@ -313,7 +313,7 @@
         <?php
 
             // kwerenda pobieranie wszystkiego z tabeli menu
-            $query = "SELECT * FROM menu";  
+            $query = "SELECT * FROM menu ORDER BY pozycja ASC";  
 
             // Wykonanie kwerendy
             $result = mysqli_query($link, $query);
@@ -323,7 +323,7 @@
                 
                 echo '
                 <tr>
-                    <th scope="row">'.$row['id_menu'].'</th>
+                    
                     <td>'.$row['nazwa'].'</td>
                     <td>'.$row['sklad'].'</td>
                     <td>'.$row['cena'].'</td>
@@ -394,7 +394,7 @@
 
             <?php 
 
-                $query = "SELECT * FROM aktualnosci";
+                $query = "SELECT * FROM aktualnosci ORDER BY pozycja ASC";
                 
                 $result = mysqli_query($link, $query);
 
@@ -472,7 +472,7 @@
 
             <?php 
 
-                $query = "SELECT * FROM wydarzenia";
+                $query = "SELECT * FROM wydarzenia ORDER BY pozycja ASC";
                 
                 $result = mysqli_query($link, $query);
 
