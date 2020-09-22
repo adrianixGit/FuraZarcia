@@ -97,7 +97,7 @@ if (mysqli_connect_error()) {
 
 	<ul class="social-icon">
 
-		<li><a href="https://pl-pl.facebook.com/furazarcia/videos/d41d8cd9/519090792368074/" class="fa fa-facebook wow fadeInUp" data-wow-delay="0.3s"></a></li>
+		<li><a href="https://www.facebook.com/furazarcia" class="fa fa-facebook wow fadeInUp" data-wow-delay="0.3s"></a></li>
 		<br/>
 		<li><a href="https://www.instagram.com/fura_zarcia/"  class="fab fa-instagram wow fadeInUp" data-wow-delay="0.6s"></a></li>
 		<br/>
@@ -106,7 +106,7 @@ if (mysqli_connect_error()) {
 		</li>
 	</ul>
 
-		<div id="zamow" class="wow fadeInUp" data-wow-delay="1.2s"><a href="https://www.facebook.com/furazarcia"  data-toggle="modal" data-target="#modalZamow" data-wow-delay="0.9s"><img src="images/zamowtext.png" style="width: 40px; margin-top:11px; margin-left:2px;"></a></div>
+		<div id="zamow" class="wow fadeInUp" data-wow-delay="1.2s"><a href=""  data-toggle="modal" data-target="#modalZamow" data-wow-delay="0.9s"><img src="images/zamowtext.png" style="width: 40px; margin-top:11px; margin-left:2px;"></a></div>
 
 </div>
 
