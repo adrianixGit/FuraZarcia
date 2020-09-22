@@ -106,7 +106,7 @@ if (mysqli_connect_error()) {
 		</li>
 	</ul>
 
-		<div id="zamow" class="wow fadeInUp" data-wow-delay="1.2s"><a href="https://pl-pl.facebook.com/furazarcia/"  data-toggle="modal" data-target="#modalZamow" data-wow-delay="0.9s"><img src="images/zamowtext.png" style="width: 40px; margin-top:11px; margin-left:2px;"></a></div>
+		<div id="zamow" class="wow fadeInUp" data-wow-delay="1.2s"><a href="https://www.facebook.com/furazarcia"  data-toggle="modal" data-target="#modalZamow" data-wow-delay="0.9s"><img src="images/zamowtext.png" style="width: 40px; margin-top:11px; margin-left:2px;"></a></div>
 
 </div>
 
